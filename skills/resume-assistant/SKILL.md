@@ -1,7 +1,7 @@
 ---
 name: resume-assistant
 description: 简历助手技能，生成专业可编辑的 HTML 简历模板，支持照片上传、PDF 导出。触发词："简历"、"简历模板"、"帮我写简历"。
-author: dan
+author: liwei
 license: MIT
 ---
 
@@ -95,11 +95,27 @@ license: MIT
 
 ### 步骤 2: 生成 HTML 简历模板
 
-调用模板文件生成可编辑的 HTML 简历：
+**自动检测用户的工作区路径**，然后生成简历：
 
 ```bash
-cp /Users/qindan/.openclaw/workspace/skills/resume-assistant/resume-template.html /Users/qindan/.openclaw/workspace/resume-待编辑.html
-open /Users/qindan/.openclaw/workspace/resume-待编辑.html
+# 自动检测工作区路径（按优先级）
+WORKSPACE=""
+if [ -d "$HOME/.openclaw/workspace" ]; then
+    WORKSPACE="$HOME/.openclaw/workspace"
+elif [ -d "$HOME/openclaw/workspace" ]; then
+    WORKSPACE="$HOME/openclaw/workspace"
+elif [ -d "./workspace" ]; then
+    WORKSPACE="./workspace"
+else
+    echo "请指定工作区路径"
+    return 1
+fi
+
+# 复制模板到工作区
+cp "$(dirname "$0")/resume-template.html" "$WORKSPACE/resume-待编辑.html"
+
+# 用浏览器打开
+open "$WORKSPACE/resume-待编辑.html"
 ```
 
 ### 步骤 3: 指导用户填写
@@ -113,7 +129,7 @@ open /Users/qindan/.openclaw/workspace/resume-待编辑.html
 > 2. 右上角照片区域可点击上传（可选）
 > 3. 编辑完成后点击"导出 PDF"或"保存修改"
 >
-> **文件位置**：`/Users/qindan/.openclaw/workspace/resume-待编辑.html`
+> **文件位置**：`$WORKSPACE/resume-待编辑.html`
 >
 > **填写建议**：
 > - 个人概述：4 句话，突出年限、品类、成果
@@ -257,12 +273,12 @@ open /Users/qindan/.openclaw/workspace/resume-待编辑.html
 
 HTML 模板位置：
 ```
-/Users/qindan/.openclaw/workspace/skills/resume-assistant/resume-template.html
+<技能目录>/resume-assistant/resume-template.html
 ```
 
 生成时复制到工作区：
 ```
-/Users/qindan/.openclaw/workspace/resume-待编辑.html
+<工作区>/resume-待编辑.html
 ```
 
 ---

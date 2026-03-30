@@ -3,626 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人简历 - 张三</title>
+    <title>简历模板 - 可编辑</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            line-height: 1.8;
-            color: #1a1a1a;
-            max-width: 210mm;
-            margin: 0 auto;
-            padding: 10mm;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
             background: #f5f5f5;
+            padding: 20px;
         }
+
         .resume {
+            max-width: 794px;
+            margin: 0 auto;
             background: white;
-            padding: 10mm;
+            padding: 40px 50px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        /* 头部 */
+
         .header {
-            border-bottom: 2px solid #1a1a1a;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #333;
         }
-        .header-info {
-            flex: 1;
+
+        .header-left h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #000;
         }
-        .name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-        }
-        .contact {
-            font-size: 13px;
-            color: #555;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+
+        .contact-info {
+            font-size: 10pt;
             line-height: 1.6;
         }
-        .contact span {
-            display: flex;
-            align-items: center;
+
+        .contact-info div {
+            margin-bottom: 3px;
         }
+
         .photo-area {
             width: 120px;
             height: 150px;
-            border: 2px dashed #ddd;
+            border: 2px dashed #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 20px;
+            color: #999;
+            font-size: 9pt;
             cursor: pointer;
-            position: relative;
             overflow: hidden;
+            background: #fafafa;
         }
-        .photo-area:hover {
-            border-color: #999;
-            background: #f9f9f9;
-        }
+
         .photo-area img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .photo-placeholder {
-            font-size: 12px;
-            color: #999;
-            text-align: center;
-            padding: 10px;
+
+        .photo-area:hover {
+            border-color: #666;
+            background: #f0f0f0;
         }
-        .photo-remove {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            font-size: 11px;
-            cursor: pointer;
-            display: none;
+
+        section {
+            margin-bottom: 18px;
         }
-        .photo-area:hover .photo-remove {
-            display: block;
-        }
-        
-        /* 章节 */
-        .section {
-            margin-bottom: 28px;
-        }
+
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c5282;
-            background: #ebf8ff;
-            padding: 10px 15px;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-            border-radius: 4px;
+            font-size: 13pt;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
         }
-        
-        /* 个人概述 */
-        .summary {
-            background: #f9f9f9;
-            padding: 15px 18px;
-            font-size: 14px;
-            line-height: 2;
-            text-align: justify;
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
-        
-        /* 工作/项目经历 */
-        .item {
-            margin-bottom: 18px;
+
+        .summary-item {
+            font-size: 10.5pt;
         }
-        .item-header {
+
+        .work-item, .project-item {
+            margin-bottom: 12px;
+        }
+
+        .work-header, .project-header {
+            font-weight: 600;
+            margin-bottom: 5px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
         }
-        .item-title {
-            font-weight: bold;
-            font-size: 15px;
-            color: #1a1a1a;
-        }
-        .item-meta {
-            font-size: 15px;
+
+        .work-date, .project-date {
+            font-weight: 400;
             color: #666;
-            font-weight: normal;
-            white-space: nowrap;
         }
-        .item-desc {
-            font-size: 14px;
-            color: #333;
-            margin-left: 10px;
+
+        .work-details, .project-details {
+            margin-left: 20px;
         }
-        .item-desc ul {
-            margin-left: 18px;
+
+        .work-details ul, .project-details ul {
+            list-style: disc;
+            margin-left: 15px;
+        }
+
+        .work-details li, .project-details li {
+            margin-bottom: 4px;
+            font-size: 10.5pt;
+        }
+
+        .project-subsection {
             margin-top: 6px;
-        }
-        .item-desc li {
-            margin-bottom: 6px;
-            line-height: 1.8;
-        }
-        .item-desc p {
             margin-bottom: 6px;
         }
-        .highlight {
-            color: #1a1a1a;
-            font-weight: bold;
+
+        .project-subsection strong {
+            font-weight: 600;
         }
-        
-        /* 技能清单 */
-        .skill-list {
-            font-size: 14px;
-            line-height: 2;
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
-        
-        /* JD 匹配提示 */
-        .jd-match {
-            background: #f0f7ff;
-            border: 1px solid #b3d9ff;
-            padding: 15px 18px;
-            margin-bottom: 20px;
-            font-size: 13px;
+
+        .skill-item {
+            font-size: 10.5pt;
         }
-        .jd-match-title {
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 10px;
+
+        .skill-item strong {
+            font-weight: 600;
         }
-        .jd-match ul {
-            margin-left: 18px;
+
+        .education-item {
+            font-size: 10.5pt;
         }
-        .jd-match li {
-            margin-bottom: 6px;
+
+        .education-header {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
         }
-        
-        /* 宽松模式（2 页） */
-        body.loose-mode {
-            padding: 20mm;
-        }
-        body.loose-mode .resume {
-            padding: 20mm;
-        }
-        body.loose-mode .section {
-            margin-bottom: 28px;
-        }
-        body.loose-mode .item {
-            margin-bottom: 18px;
-        }
-        body.loose-mode .item-desc li {
-            margin-bottom: 6px;
-            line-height: 1.8;
-        }
-        body.loose-mode .summary {
-            padding: 15px 18px;
-            line-height: 2;
-        }
-        body.loose-mode .name {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-        body.loose-mode .contact {
-            gap: 20px;
-            font-size: 13px;
-        }
-        body.loose-mode .section-title {
-            font-size: 18px;
-            padding: 10px 15px;
-            margin-bottom: 18px;
-        }
-        body.loose-mode .item-title {
-            font-size: 15px;
-        }
-        body.loose-mode .item-meta {
-            font-size: 13px;
-        }
-        body.loose-mode .item-desc {
-            font-size: 14px;
-        }
-        body.compact-mode .item {
-            margin-bottom: 12px;
-        }
-        body.compact-mode .item-desc li {
-            margin-bottom: 3px;
-            line-height: 1.5;
-        }
-        body.compact-mode .summary {
-            padding: 10px 12px;
-            line-height: 1.6;
-        }
-        body.compact-mode .name {
-            font-size: 26px;
-            margin-bottom: 8px;
-        }
-        body.compact-mode .contact {
-            gap: 12px;
-            font-size: 12px;
-        }
-        body.compact-mode .section-title {
-            font-size: 16px;
-            padding: 8px 12px;
-            margin-bottom: 12px;
-        }
-        body.compact-mode .item-title {
-            font-size: 14px;
-        }
-        body.compact-mode .item-meta {
-            font-size: 12px;
-        }
-        body.compact-mode .item-desc {
-            font-size: 13px;
-        }
-        
-        /* 可编辑提示 */
-        .editable {
-            border: 1px dashed transparent;
+
+        /* Editable styles */
+        [contenteditable="true"] {
+            border: 1px solid transparent;
             padding: 2px 4px;
-            transition: all 0.15s;
+            border-radius: 3px;
+            transition: all 0.2s;
         }
-        .editable:hover {
-            border-color: #999;
-            background: #f5f5f5;
-            cursor: text;
+
+        [contenteditable="true"]:hover {
+            border-color: #ddd;
+            background: #fafafa;
         }
-        .editable:focus {
+
+        [contenteditable="true"]:focus {
             outline: none;
-            border-color: #1a1a1a;
+            border-color: #4a90d9;
             background: #fff;
+            box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.2);
         }
-        
-        /* 工具栏 */
-        .toolbar {
+
+        /* Controls */
+        .controls {
             position: fixed;
             top: 20px;
             right: 20px;
             background: white;
-            padding: 15px 18px;
-            border-radius: 4px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             z-index: 1000;
-            border: 1px solid #ddd;
-            max-width: 220px;
         }
-        .toolbar button {
+
+        .controls h3 {
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+
+        .controls button {
             display: block;
             width: 100%;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            background: #1a1a1a;
-            color: white;
+            padding: 8px 15px;
+            margin-bottom: 8px;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
+            font-size: 10pt;
+            transition: background 0.2s;
         }
-        .toolbar button:hover {
-            background: #333;
+
+        .btn-primary {
+            background: #4a90d9;
+            color: white;
         }
-        .toolbar .hint {
-            font-size: 11px;
-            color: #888;
-            margin-top: 12px;
-            line-height: 1.5;
+
+        .btn-primary:hover {
+            background: #3a7bc8;
         }
-        .toolbar label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 12px;
-            color: #555;
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
         }
-        .toolbar input[type="file"] {
-            font-size: 11px;
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .tips {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            font-size: 9pt;
+            color: #666;
+        }
+
+        .tips ul {
+            margin-left: 15px;
             margin-top: 5px;
         }
-        
-        /* 打印样式 */
+
+        .tips li {
+            margin-bottom: 3px;
+        }
+
+        /* Print styles */
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
+
             .resume {
                 box-shadow: none;
-                padding: 0;
+                padding: 30px 40px;
             }
-            .toolbar {
+
+            .controls {
                 display: none;
             }
-            .editable:hover,
-            .editable:focus {
-                border-color: transparent;
-                background: transparent;
-            }
-            .photo-area {
+
+            [contenteditable="true"] {
                 border: none;
             }
+
+            [contenteditable="true"]:hover,
+            [contenteditable="true"]:focus {
+                border: none;
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        /* Hidden file input */
+        #photoInput {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="toolbar">
-        <button onclick="window.print()">导出 PDF</button>
-        <button onclick="saveHTML()">保存修改</button>
-        <p class="hint">提示：点击文字即可编辑，点击照片区域上传</p>
+    <div class="controls">
+        <h3>🦐 简历助手</h3>
+        <button class="btn-primary" onclick="exportPDF()">📄 导出 PDF</button>
+        <button class="btn-secondary" onclick="saveHTML()">💾 保存修改</button>
+        <div class="tips">
+            <strong>使用说明：</strong>
+            <ul>
+                <li>点击任意文字即可编辑</li>
+                <li>右上角照片区域可上传</li>
+                <li>编辑完成后导出 PDF</li>
+                <li>文件命名：岗位_名字.html</li>
+            </ul>
+        </div>
     </div>
 
     <div class="resume">
-        <!-- 基本信息 -->
+        <!-- 头部 -->
         <div class="header">
-            <div class="header-info">
-                <div class="name editable" contenteditable="true">张三</div>
-                <div class="contact">
-                    <span class="editable" contenteditable="true">手机：138-xxxx-xxxx</span>
-                    <span class="editable" contenteditable="true">邮箱：yourname@gmail.com</span>
-                    <span class="editable" contenteditable="true">现居：城市</span>
-                    <span class="editable" contenteditable="true">微信：your_wechat</span>
-                    <span class="editable" contenteditable="true">GitHub: github.com/yourname</span>
+            <div class="header-left">
+                <h1 contenteditable="true">张三</h1>
+                <div class="contact-info">
+                    <div contenteditable="true">📱 138-xxxx-xxxx</div>
+                    <div contenteditable="true">📧 email@example.com</div>
+                    <div contenteditable="true">📍 成都</div>
+                    <div contenteditable="true">💬 微信：your_wechat</div>
+                    <div contenteditable="true">🔗 github.com/yourname</div>
                 </div>
             </div>
-            <div class="photo-area" id="photoArea" onclick="uploadPhoto()" style="display: flex;">
-                <img id="photoImg" src="" alt="照片">
-                <button class="photo-remove" onclick="removePhoto(event)">移除</button>
-                <div class="photo-placeholder" id="photoPlaceholder">点击上传照片</div>
+            <div class="photo-area" onclick="document.getElementById('photoInput').click()">
+                <img id="photoPreview" style="display:none;">
+                <span id="photoText">点击上传照片<br>（可选）</span>
             </div>
+            <input type="file" id="photoInput" accept="image/*" onchange="uploadPhoto(event)">
         </div>
 
         <!-- 个人概述 -->
-        <div class="section">
-            <div class="section-title">个人概述</div>
-            <div class="item-desc editable" contenteditable="true">
-                <ul>
-                    <li><strong>工作经验：</strong>5 年游戏服务器开发经验，精通 Go/C++ 编程语言，熟悉 Python/Lua</li>
-                    <li><strong>项目经历：</strong>主导过 3 款上线项目（SLG/MMO/卡牌品类），累计 DAU 超 50 万</li>
-                    <li><strong>技术能力：</strong>擅长分布式系统设计与性能优化，单服承载从 800 人提升至 3000 人</li>
-                    <li><strong>团队协作：</strong>具备良好的代码规范和团队协作能力，组织技术分享 10+ 次</li>
-                </ul>
+        <section>
+            <div class="section-title" contenteditable="true">个人概述</div>
+            <div class="summary-grid">
+                <div class="summary-item" contenteditable="true">• 10 年游戏服务器开发经验，精通 Go/C++，熟悉微服务架构</div>
+                <div class="summary-item" contenteditable="true">• 主导 5+ 款手游服务器开发，品类涵盖 MMORPG/SLG/卡牌</div>
+                <div class="summary-item" contenteditable="true">• 单服承载从 1000 人提升至 3000 人，响应时间缩短 30%</div>
+                <div class="summary-item" contenteditable="true">• 建立代码规范，组织技术分享，培养 3 名初级工程师</div>
             </div>
-        </div>
+        </section>
 
         <!-- 工作经历 -->
-        <div class="section">
-            <div class="section-title">工作经历</div>
+        <section>
+            <div class="section-title" contenteditable="true">工作经历</div>
             
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">1.</span> 上海幻萌网络科技有限公司 | 高级服务器开发工程师</span>
-                    <span class="item-meta editable" contenteditable="true">2022.03 - 至今</span>
+            <div class="work-item">
+                <div class="work-header">
+                    <span contenteditable="true">1. XX 科技有限公司 | 高级服务器开发工程师</span>
+                    <span class="work-date" contenteditable="true">2020.06 - 至今</span>
                 </div>
-                <div class="item-desc">
+                <div class="work-details">
                     <ul>
-                        <li class="editable" contenteditable="true">负责 SLG 项目服务器架构设计与核心模块开发，团队 15 人</li>
-                        <li class="editable" contenteditable="true">搭建微服务框架，支持多服互通，QPS 从 1500 提升至 5000</li>
-                        <li class="editable" contenteditable="true">建立代码规范与 Review 流程，线上 Bug 率下降 45%</li>
-                        <li class="editable" contenteditable="true">编写技术文档 15 篇，组织内部分享 8 次，培养 2 名初级工程师</li>
+                        <li contenteditable="true">负责 MMORPG 手游核心战斗服务器架构设计，支持 3000+ 并发</li>
+                        <li contenteditable="true">设计基于 UDP(KCP) 的高性能网络传输层，响应时间缩短 30%</li>
+                        <li contenteditable="true">搭建实时对战匹配系统，匹配成功率 99.5%，平均等待时间&lt;3 秒</li>
+                        <li contenteditable="true">优化数据库查询，关键接口响应时间从 200ms 降至 50ms</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">2.</span> 北京莉莉丝游戏 | 服务器开发工程师</span>
-                    <span class="item-meta editable" contenteditable="true">2019.07 - 2022.02</span>
+            <div class="work-item">
+                <div class="work-header">
+                    <span contenteditable="true">2. XX 网络科技有限公司 | 服务器开发工程师</span>
+                    <span class="work-date" contenteditable="true">2016.07 - 2020.05</span>
                 </div>
-                <div class="item-desc">
+                <div class="work-details">
                     <ul>
-                        <li class="editable" contenteditable="true">参与 MMO 手游核心系统开发，独立完成战斗、公会、邮件等模块</li>
-                        <li class="editable" contenteditable="true">使用 Go 开发服务器接口 50+ 个，日均处理请求 200 万+</li>
-                        <li class="editable" contenteditable="true">优化数据库查询，慢查询数量减少 70%，接口响应时间降低 60%</li>
-                        <li class="editable" contenteditable="true">协助排查线上问题，定位并修复 P0/P1 级 Bug 30+ 个</li>
+                        <li contenteditable="true">负责卡牌手游服务器开发，上线首月流水破 5000 万</li>
+                        <li contenteditable="true">实现公会战系统，支持 100 人同屏战斗，帧率稳定 60fps</li>
+                        <li contenteditable="true">搭建日志监控系统，Bug 定位时间从 2 小时缩短至 15 分钟</li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- 项目经历 -->
-        <div class="section">
-            <div class="section-title">项目经历</div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">1.</span> 王国纪元（SLG 策略手游） | 核心开发</span>
-                    <span class="item-meta editable" contenteditable="true">2023.01 - 2024.01 | 团队 18 人</span>
+        <section>
+            <div class="section-title" contenteditable="true">项目经历</div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <span contenteditable="true">1. 《XX 传奇》MMORPG 手游 | 核心服务器开发</span>
+                    <span class="project-date" contenteditable="true">2023.03 - 2024.01 | 团队 8 人</span>
                 </div>
-                <div class="item-desc">
-                    <ul>
-                        <li class="editable" contenteditable="true">
-                            <strong>项目简介：</strong><br>
-                            　　• 公司旗舰 SLG 产品，全球上线<br>
-                            　　• 峰值 DAU 35 万+，月流水破 5000 万
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>技术架构：</strong><br>
-                            　　• 后端：Go + Micro 微服务框架<br>
-                            　　• 数据库：MySQL + Redis + Kubernetes
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>主要工作：</strong><br>
-                            　　• 设计并实现跨服战系统，支持 100 人同屏战斗，延迟 &lt;80ms<br>
-                            　　• 搭建分布式缓存架构，使用 Redis Cluster 支撑 10 万 + QPS<br>
-                            　　• 优化战斗计算性能，单场战斗耗时从 3s 降至 800ms<br>
-                            　　• 实现灰度发布系统，支持按服/按用户比例逐步放量
-                        </li>
-                    </ul>
+                <div class="project-details">
+                    <div class="project-subsection" contenteditable="true"><strong>项目简介：</strong>3D MMORPG 手游，上线首月 DAU 50 万，月流水破亿</div>
+                    <div class="project-subsection" contenteditable="true"><strong>技术架构：</strong>Go + Micro 微服务 + MySQL + Redis + Kubernetes</div>
+                    <div class="project-subsection">
+                        <strong>主要工作：</strong>
+                        <ul>
+                            <li contenteditable="true">设计战斗同步方案，采用帧同步 + 状态校验，外挂检测率 95%+</li>
+                            <li contenteditable="true">实现跨服战系统，支持 8 个服务器 2000 人同场竞技</li>
+                            <li contenteditable="true">优化场景加载，采用分区分块策略，加载时间从 10s 降至 3s</li>
+                            <li contenteditable="true">搭建 GM 工具平台，提升运营效率 60%</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">2.</span> 剑与家园（MMOARPG 手游） | 主力开发</span>
-                    <span class="item-meta editable" contenteditable="true">2020.06 - 2021.12 | 团队 20 人</span>
+            <div class="project-item">
+                <div class="project-header">
+                    <span contenteditable="true">2. 《XX 战记》SLG 手游 | 服务器主程</span>
+                    <span class="project-date" contenteditable="true">2021.06 - 2022.12 | 团队 12 人</span>
                 </div>
-                <div class="item-desc">
-                    <ul>
-                        <li class="editable" contenteditable="true">
-                            <strong>项目简介：</strong><br>
-                            　　• 公司首款 MMOARPG 手游，国内上线<br>
-                            　　• 峰值 DAU 18 万+，上线首月流水破亿
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>技术架构：</strong><br>
-                            　　• 后端：Go + Skynet 框架<br>
-                            　　• 数据库：MySQL + Redis + MongoDB
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>主要工作：</strong><br>
-                            　　• 负责公会系统开发，实现公会战、副本、拍卖行等功能<br>
-                            　　• 使用消息队列解耦业务模块，开发效率提升 40%<br>
-                            　　• 设计分库分表方案，支撑 500 万 + 玩家数据<br>
-                            　　• 项目上线后稳定运行 12 个月，月流水破亿
-                        </li>
-                    </ul>
+                <div class="project-details">
+                    <div class="project-subsection" contenteditable="true"><strong>项目简介：</strong>多人在线 SLG 手游，全球同服，支持 10 万玩家同图</div>
+                    <div class="project-subsection" contenteditable="true"><strong>技术架构：</strong>C++ + 自研框架 + MongoDB + Redis Cluster</div>
+                    <div class="project-subsection">
+                        <strong>主要工作：</strong>
+                        <ul>
+                            <li contenteditable="true">设计 AOI 兴趣范围算法，同屏百人战斗性能下降&lt;15%</li>
+                            <li contenteditable="true">实现联盟战系统，支持 100vs100 实时对战</li>
+                            <li contenteditable="true">搭建全球同服架构，通过延迟预测 + 状态补偿优化跨国体验</li>
+                            <li contenteditable="true">设计资源预热方案，服务器成本降低 40%</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">3.</span> 小小军师（卡牌策略手游） | 参与开发</span>
-                    <span class="item-meta editable" contenteditable="true">2019.09 - 2020.05 | 团队 12 人</span>
-                </div>
-                <div class="item-desc">
-                    <ul>
-                        <li class="editable" contenteditable="true">
-                            <strong>项目简介：</strong><br>
-                            　　• 轻度卡牌策略手游<br>
-                            　　• 峰值 DAU 5 万+
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>技术架构：</strong><br>
-                            　　• 后端：C++ + Lua 脚本<br>
-                            　　• 数据库：MySQL + Redis
-                        </li>
-                        <li class="editable" contenteditable="true">
-                            <strong>主要工作：</strong><br>
-                            　　• 负责抽卡系统、养成系统开发，实现保底、概率控制等功能<br>
-                            　　• 使用 Lua 热更方案，支持不停服更新业务逻辑<br>
-                            　　• 优化登录流程，登录成功率从 92% 提升至 99.5%
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- 专业技能 -->
-        <div class="section">
-            <div class="section-title">专业技能</div>
-            <div class="item-desc skill-list editable" contenteditable="true">
-                编程语言：Go (精通)、C++ (熟练)、Python (熟练)、Lua (熟练)<br>
-                游戏引擎：Unity 3D、Unreal Engine 4（服务端对接）<br>
-                数据库：MySQL (精通)、Redis (精通)、MongoDB (熟练)<br>
-                服务器：分布式系统、微服务架构、高并发开发、Kubernetes<br>
-                工具平台：Git、Docker、Jenkins、Linux、Prometheus<br>
-                其他：TCP/IP 网络编程、多线程编程、设计模式、CI/CD
+        <section>
+            <div class="section-title" contenteditable="true">专业技能</div>
+            <div class="skills-grid">
+                <div class="skill-item" contenteditable="true"><strong>编程语言：</strong>精通 Go/C++，熟练 Python/Lua</div>
+                <div class="skill-item" contenteditable="true"><strong>网络编程：</strong>TCP/UDP/KCP，帧同步/状态同步</div>
+                <div class="skill-item" contenteditable="true"><strong>并发模型：</strong>协程/Actor 模型/锁优化</div>
+                <div class="skill-item" contenteditable="true"><strong>架构能力：</strong>微服务/分布式/高可用设计</div>
+                <div class="skill-item" contenteditable="true"><strong>数据库：</strong>MySQL/Redis/MongoDB，分库分表</div>
+                <div class="skill-item" contenteditable="true"><strong>工具平台：</strong>Git/Docker/K8s/Linux</div>
             </div>
-        </div>
+        </section>
 
         <!-- 教育背景 -->
-        <div class="section">
-            <div class="section-title">教育背景</div>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title editable" contenteditable="true"><span style="color: #2c5282; font-weight: bold;">1.</span> 电子科技大学 | 计算机科学与技术 | 本科</span>
-                    <span class="item-meta editable" contenteditable="true">2015.09 - 2019.06</span>
-                </div>
-                <div class="item-desc">
-                    <ul>
-                        <li class="editable" contenteditable="true">主修课程：数据结构、操作系统、计算机网络、数据库原理、分布式系统</li>
-                        <li class="editable" contenteditable="true">奖项：国家励志奖学金（2 次）、全国程序设计竞赛省级二等奖</li>
-                        <li class="editable" contenteditable="true">GPA：3.7/4.0（专业前 10%）</li>
-                    </ul>
+        <section>
+            <div class="section-title" contenteditable="true">教育背景</div>
+            <div class="education-item">
+                <div class="education-header">
+                    <span contenteditable="true">XX 大学 | 计算机科学与技术 | 本科</span>
+                    <span class="work-date" contenteditable="true">2012.09 - 2016.06</span>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <script>
-        let photoVisible = false;
+        // 照片上传功能
+        function uploadPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('photoPreview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    document.getElementById('photoText').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
+        // 导出 PDF（调用浏览器打印）
+        function exportPDF() {
+            window.print();
+        }
+
+        // 保存 HTML
         function saveHTML() {
             const html = document.documentElement.outerHTML;
             const blob = new Blob([html], { type: 'text/html' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            
-            const name = document.querySelector('.name')?.textContent?.trim() || '简历';
-            const jobTitle = extractJobTitle();
-            const filename = jobTitle + '_' + name + '.html';
-            
             a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
+            a.download = '简历 - 待编辑.html';
             a.click();
-            document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            alert('简历已保存：' + filename);
+            alert('✅ 简历已保存！建议按 "岗位_名字.html" 格式重命名');
         }
 
-        function extractJobTitle() {
-            const summary = document.querySelector('.summary')?.textContent || '';
-            const jobPatterns = [
-                /(服务器 | 后端 | 客户端 | 前端 | 全栈 | 游戏) 开发 (工程师 | 主程 | 架构师)/,
-                /(服务器 | 后端 | 客户端 | 前端 | 全栈) 工程师/,
-                /(技术 | 主程 | 架构师)/
-            ];
-            for (const pattern of jobPatterns) {
-                const match = summary.match(pattern);
-                if (match) return match[0];
-            }
-            return '工程师';
-        }
-
-        function togglePhoto() {
-            const photoArea = document.getElementById('photoArea');
-            photoVisible = !photoVisible;
-            photoArea.style.display = photoVisible ? 'block' : 'none';
-        }
-
-        function uploadPhoto() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('photoImg').src = e.target.result;
-                        document.getElementById('photoPlaceholder').style.display = 'none';
-                        document.getElementById('photoArea').style.display = 'block';
-                        photoVisible = true;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
-
-        function removePhoto(event) {
-            event.stopPropagation();
-            document.getElementById('photoImg').src = '';
-            document.getElementById('photoPlaceholder').style.display = 'block';
-            document.getElementById('photoArea').style.display = 'none';
-            photoVisible = false;
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('提示：点击任意文字即可编辑');
-        });
+        // 提示用户开始编辑
+        window.onload = function() {
+            console.log('🦐 简历模板已加载，点击任意文字开始编辑！');
+        };
     </script>
 </body>
 </html>

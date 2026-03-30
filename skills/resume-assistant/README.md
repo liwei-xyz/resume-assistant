@@ -24,22 +24,28 @@
 
 ## 🚀 快速开始
 
-### 方式 1：作为 OpenClaw 技能使用
+### 方式 1：一键安装（推荐）
 
 ```bash
-# 克隆到 OpenClaw 技能目录
-git clone https://github.com/你的用户名/resume-assistant.git ~/.openclaw/workspace/skills/resume-assistant
-
-# 在 OpenClaw 中触发
-对我说："帮我写简历"
+curl -sL https://github.com/liwei-xyz/resume-assistant/raw/main/install.sh | bash
 ```
 
-### 方式 2：直接使用 HTML 模板
+### 方式 2：手动安装
 
-1. 下载 `resume-template.html`
-2. 用浏览器打开
-3. 点击文字编辑内容
-4. 点击"导出 PDF"保存
+```bash
+# 自动检测技能目录并克隆
+SKILL_DIR=""
+if [ -d "$HOME/.openclaw/workspace/skills" ]; then
+    SKILL_DIR="$HOME/.openclaw/workspace/skills"
+elif [ -d "$HOME/openclaw/workspace/skills" ]; then
+    SKILL_DIR="$HOME/openclaw/workspace/skills"
+else
+    echo "请指定技能目录"
+    return 1
+fi
+
+git clone https://github.com/liwei-xyz/resume-assistant.git "$SKILL_DIR/resume-assistant"
+```
 
 ## 📋 简历结构
 
