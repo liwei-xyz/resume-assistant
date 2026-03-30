@@ -35,9 +35,21 @@ fi
 echo ""
 echo "✅ 安装完成！"
 echo ""
-echo "📝 使用方法："
-echo "   在 OpenClaw 中说：帮我写简历"
+
+# 创建新安装标记，触发 OpenClaw 主动欢迎
+touch "$SKILL_DIR/resume-assistant/.new-install"
+echo "📝 正在启动简历助手..."
 echo ""
-echo "📄 或直接使用模板："
-echo "   open $SKILL_DIR/resume-assistant/resume-template.html"
+
+# 尝试触发 OpenClaw 会话（如果 openclaw CLI 可用）
+if command -v openclaw &> /dev/null; then
+    openclaw message send --message "🦐 resume-assistant 已安装，开始欢迎流程" 2>/dev/null || true
+fi
+
+# 自动打开模板（可选）
+if [ -f "$SKILL_DIR/resume-assistant/resume-template.html" ]; then
+    open "$SKILL_DIR/resume-assistant/resume-template.html" 2>/dev/null || true
+fi
+
+echo "📄 模板已在浏览器打开！"
 echo ""
