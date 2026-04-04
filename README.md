@@ -22,30 +22,13 @@
 | 🏷️ 自动命名 | 按 `岗位_名字.html` 格式命名 |
 | 📱 一页布局 | 紧凑排版，符合 HR 筛选习惯 |
 
-## 🚀 快速开始
-
-### 方式 1：一键安装（推荐）
+## 🚀 安装
 
 ```bash
-curl -sL https://github.com/liwei-xyz/resume-assistant/raw/main/install.sh | bash
+git clone https://github.com/liwei-xyz/resume-assistant.git ~/.openclaw/workspace/skills/resume-assistant
 ```
 
-### 方式 2：手动安装
-
-```bash
-# 自动检测技能目录并克隆
-SKILL_DIR=""
-if [ -d "$HOME/.openclaw/workspace/skills" ]; then
-    SKILL_DIR="$HOME/.openclaw/workspace/skills"
-elif [ -d "$HOME/openclaw/workspace/skills" ]; then
-    SKILL_DIR="$HOME/openclaw/workspace/skills"
-else
-    echo "请指定技能目录"
-    return 1
-fi
-
-git clone https://github.com/liwei-xyz/resume-assistant.git "$SKILL_DIR/resume-assistant"
-```
+安装完成后，在对话中说 **"帮我写简历"** 或 **"简历模板"** 即可使用。
 
 ## 📋 简历结构
 
@@ -135,5 +118,5 @@ MIT License
 
 ---
 
-**最后更新**：2026-03-29  
-**版本**：v1.0
+**最后更新**：2026-04-04  
+**版本**：v1.1
